@@ -1,17 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3F955198-6B9D-456E-87D0-6224CA4BF11A}</ProjectGuid>
+    <ProjectGuid>{C2211733-BB0F-438D-A5CA-4084980CBBC3}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SuperFramework</RootNamespace>
-    <AssemblyName>SuperFramework</AssemblyName>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>ClassLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -19,50 +15,132 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;RELEASE_BUILD</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;RELEASE_BUILD</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>SuperFramework</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\Program Files\Unity\Hub\Editor\2022.3.5f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files\Unity\Hub\Editor\2022.3.5f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Core\Subsystems\TutorialSystem.cs" />
-    <Compile Include="Classes\Core\UnityImplementation\BaseTutorialFlow.cs" />
-    <Compile Include="Classes\Core\UnityImplementation\BaseTutorialStep.cs" />
-    <Compile Include="Classes\Core\UnityImplementation\DontDestroyer.cs" />
+    <Content Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".git\COMMIT_EDITMSG" />
+    <None Include=".git\config" />
+    <None Include=".git\description" />
+    <None Include=".git\FETCH_HEAD" />
+    <None Include=".git\HEAD" />
+    <None Include=".git\hooks\applypatch-msg.sample" />
+    <None Include=".git\hooks\commit-msg.sample" />
+    <None Include=".git\hooks\fsmonitor-watchman.sample" />
+    <None Include=".git\hooks\post-update.sample" />
+    <None Include=".git\hooks\pre-applypatch.sample" />
+    <None Include=".git\hooks\pre-commit.sample" />
+    <None Include=".git\hooks\pre-merge-commit.sample" />
+    <None Include=".git\hooks\pre-push.sample" />
+    <None Include=".git\hooks\pre-rebase.sample" />
+    <None Include=".git\hooks\pre-receive.sample" />
+    <None Include=".git\hooks\prepare-commit-msg.sample" />
+    <None Include=".git\hooks\push-to-checkout.sample" />
+    <None Include=".git\hooks\update.sample" />
+    <None Include=".git\index" />
+    <None Include=".git\info\exclude" />
+    <None Include=".git\logs\HEAD" />
+    <None Include=".git\logs\refs\heads\main" />
+    <None Include=".git\logs\refs\remotes\origin\HEAD" />
+    <None Include=".git\logs\refs\remotes\origin\main" />
+    <None Include=".git\objects\07\7b9ab8c89823f7f3535006f1f8c2976cd9f7a2" />
+    <None Include=".git\objects\08\0a411bca3cab4ad837b6c819bad5057363165c" />
+    <None Include=".git\objects\11\870688ceffcec55f967ac3fcd1d7c27c2599da" />
+    <None Include=".git\objects\19\60a3b4731fd2acb3aca87729773a00aa5b5e7d" />
+    <None Include=".git\objects\31\3a39d784b25ae61eb1ece097cc0974c7e0e5bd" />
+    <None Include=".git\objects\36\2bfcadcb0f3f25d5602045a07a481add848837" />
+    <None Include=".git\objects\36\728d5be1efec4b34511a8db9fd5d70dfe8659e" />
+    <None Include=".git\objects\3c\6852f10767dab8f3ab76f1978e17bcfe724412" />
+    <None Include=".git\objects\3f\8a18baafbb9253500d592a61f362ff1e91dc1a" />
+    <None Include=".git\objects\4f\506913ac8ce21ebce6b56dbf8026fea562ed0c" />
+    <None Include=".git\objects\4f\78a82081591dc4eb2bf9244f1c1200542a6ab0" />
+    <None Include=".git\objects\51\1deb21a8a9e0f2d174bcf650248a34a5090852" />
+    <None Include=".git\objects\56\b95000defd3ba809aca3f24f08cf6a9270486d" />
+    <None Include=".git\objects\56\c693fb2f0c2dc7df65dfb00953faf3120686f2" />
+    <None Include=".git\objects\5d\4e1d63216221de70ecb441c81a7a7e4786b677" />
+    <None Include=".git\objects\71\0b073190b3c473f27500410a5315037abaed3d" />
+    <None Include=".git\objects\78\9e088198e1be8017d8f7a66bf23ce9df048225" />
+    <None Include=".git\objects\7b\f9725756356776c8b5f03af988781351d0da35" />
+    <None Include=".git\objects\81\6f2354b22de4fd38f282acab08bea511110630" />
+    <None Include=".git\objects\8d\97fe55b1cb3414a7c81b0c647662c4dac5e1e9" />
+    <None Include=".git\objects\92\cef59b5a1ddd7eb4a831a30c8c4cdaa707b0ad" />
+    <None Include=".git\objects\92\e8a3915ab22e84ac0e3781f95e7930aaba01d3" />
+    <None Include=".git\objects\94\56ddd9aa410d97854c773baf34e42ef068ebdd" />
+    <None Include=".git\objects\97\32b4cc80642cac43e0db76b00d946e9d10f887" />
+    <None Include=".git\objects\9f\f1b7d45dee2a1e7b4bcd314ee7caf17123a8a3" />
+    <None Include=".git\objects\a1\003bfd519a606f72f155ac2172345fe4b3865a" />
+    <None Include=".git\objects\a3\77861a7dd9d8e6e712705222533b46ef2b24b4" />
+    <None Include=".git\objects\a4\4fdf91fce3c47233a3bb29438a03ca9802f0cb" />
+    <None Include=".git\objects\a9\32abd5d5cd7e83fc0711bc59011c9d0fa0b94c" />
+    <None Include=".git\objects\ac\ffc068c1826ba8baf85c619f920b28ce8d4d49" />
+    <None Include=".git\objects\b0\d521b21859bd5c7ad108d4ba919b2b6429f008" />
+    <None Include=".git\objects\b5\07de4b7dbb8e77a36a30a5c80fce2edc9a9e4b" />
+    <None Include=".git\objects\bd\4a30c5623eb67fa7326f1ac33bcf049181bf4b" />
+    <None Include=".git\objects\cd\49d5006bb7af730c6300f549a8be13ac8a8a02" />
+    <None Include=".git\objects\ce\66e4a3913c54ec54badc11fa7ec9c950635f96" />
+    <None Include=".git\objects\d5\e509b732686e0e4753201fecfe75b843106855" />
+    <None Include=".git\objects\df\3e212d7511deb4da82eca15efc30df355a73b2" />
+    <None Include=".git\objects\e6\f05a41e65cd4dc2da1305ea463a957d5b4820b" />
+    <None Include=".git\objects\ec\b190afdecbf796149a7de79f79b36bfd20f199" />
+    <None Include=".git\objects\ed\ae7cea86fa33f76275eeb1cb6f65021ec87015" />
+    <None Include=".git\objects\f2\69314d511558568d635fe789305779d214450d" />
+    <None Include=".git\objects\fd\9b80fe31d299d085d5c1333e3dac816162eaca" />
+    <None Include=".git\objects\pack\pack-313ac99608f01e7e43da63834405e16eee468147.idx" />
+    <None Include=".git\objects\pack\pack-313ac99608f01e7e43da63834405e16eee468147.pack" />
+    <None Include=".git\packed-refs" />
+    <None Include=".git\refs\heads\main" />
+    <None Include=".git\refs\remotes\origin\HEAD" />
+    <None Include=".git\refs\remotes\origin\main" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Classes\Core\Subsystems\AdsSubsystem.cs" />
     <Compile Include="Classes\Core\Subsystems\AnalyticsSubsystem.cs" />
+    <Compile Include="Classes\Core\Subsystems\LocalNotificationSubsystem.cs" />
+    <Compile Include="Classes\Core\Subsystems\SaveGameSubsystem.cs" />
+    <Compile Include="Classes\Core\Subsystems\TutorialSystem.cs" />
+    <Compile Include="Classes\Core\Subsystems\UISubsystem.cs" />
     <Compile Include="Classes\Core\UnityImplementation\BaseOverlay.cs" />
     <Compile Include="Classes\Core\UnityImplementation\BasePopUp.cs" />
     <Compile Include="Classes\Core\UnityImplementation\BaseScreen.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\BaseTutorialFlow.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\BaseTutorialStep.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\DontDestroyer.cs" />
     <Compile Include="Classes\Core\UnityImplementation\GameContext.cs" />
-    <Compile Include="Classes\Core\Subsystems\UISubsystem.cs" />
-    <Compile Include="Classes\Core\Subsystems\LocalNotificationSubsystem.cs" />
     <Compile Include="Classes\Core\UnityImplementation\MainSystem.cs" />
     <Compile Include="Classes\Core\UnityImplementation\TutorialOverlay.cs" />
     <Compile Include="Classes\Core\UnityImplementation\UnityLogger.cs" />
     <Compile Include="Classes\Default\NullLogger.cs" />
     <Compile Include="Classes\Utils\Pooler.cs" />
-    <Compile Include="Classes\Core\Subsystems\SaveGameSubsystem.cs" />
     <Compile Include="Classes\Utils\Stopwatch.cs" />
     <Compile Include="Classes\Utils\Timer.cs" />
     <Compile Include="Interfaces\IAdsProvider.cs" />
@@ -72,11 +150,17 @@
     <Compile Include="Interfaces\IOverlay.cs" />
     <Compile Include="Interfaces\IPoolable.cs" />
     <Compile Include="Interfaces\IPopUp.cs" />
+    <Compile Include="Interfaces\ISubsystem.cs" />
     <Compile Include="Interfaces\IUpdate.cs" />
     <Compile Include="Interfaces\IView.cs" />
-    <Compile Include="Interfaces\ISubsystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include=".git\objects\info\" />
+    <Folder Include=".git\refs\tags\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
 </Project>
