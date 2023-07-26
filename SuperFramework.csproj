@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3F955198-6B9D-456E-87D0-6224CA4BF11A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SuperFramework</RootNamespace>
+    <AssemblyName>SuperFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;RELEASE_BUILD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;RELEASE_BUILD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\Program Files\Unity\Hub\Editor\2022.3.5f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Core\Subsystems\TutorialSystem.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\BaseTutorialFlow.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\BaseTutorialStep.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\DontDestroyer.cs" />
+    <Compile Include="Classes\Core\Subsystems\AdsSubsystem.cs" />
+    <Compile Include="Classes\Core\Subsystems\AnalyticsSubsystem.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\BaseOverlay.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\BasePopUp.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\BaseScreen.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\GameContext.cs" />
+    <Compile Include="Classes\Core\Subsystems\UISubsystem.cs" />
+    <Compile Include="Classes\Core\Subsystems\LocalNotificationSubsystem.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\MainSystem.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\TutorialOverlay.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\UnityLogger.cs" />
+    <Compile Include="Classes\Default\NullLogger.cs" />
+    <Compile Include="Classes\Utils\Pooler.cs" />
+    <Compile Include="Classes\Core\Subsystems\SaveGameSubsystem.cs" />
+    <Compile Include="Classes\Utils\Stopwatch.cs" />
+    <Compile Include="Classes\Utils\Timer.cs" />
+    <Compile Include="Interfaces\IAdsProvider.cs" />
+    <Compile Include="Interfaces\IAnalyticsProvider.cs" />
+    <Compile Include="Interfaces\IInitializable.cs" />
+    <Compile Include="Interfaces\ILogger.cs" />
+    <Compile Include="Interfaces\IOverlay.cs" />
+    <Compile Include="Interfaces\IPoolable.cs" />
+    <Compile Include="Interfaces\IPopUp.cs" />
+    <Compile Include="Interfaces\IUpdate.cs" />
+    <Compile Include="Interfaces\IView.cs" />
+    <Compile Include="Interfaces\ISubsystem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
