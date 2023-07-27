@@ -19,6 +19,9 @@ namespace SuperFramework.Classes.Core
         protected MainSystem _mainSystem;
         protected static GameContext _instance;
 
+        /// <summary>
+        /// Get game context instance
+        /// </summary>
         public static GameContext Instance
         {
             get
@@ -130,12 +133,20 @@ namespace SuperFramework.Classes.Core
 
         }
 
+        /// <summary>
+        /// Get subsystem by type
+        /// </summary>
+        /// <typeparam name="T">Subsystem type</typeparam>
+        /// <returns>Subsystem if exists, null otherwise</returns>
         public T GetSubsystem<T>()
         {
             return (T)_mainSystem.GetSubsystem<T>();
         }
     }
 
+    /// <summary>
+    /// Game context logger extension
+    /// </summary>
     public static class GameContextLoggerExtension
     {
         public static ILogger GetLogger(this MonoBehaviour mono)

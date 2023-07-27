@@ -10,8 +10,14 @@ namespace SuperFramework.Core
     public delegate void OnSystemInitializationCompleted();
     public delegate void OnSystemInitializationProgress(string systemName, float progress);
 
+    /// <summary>
+    /// Main system only exists in GameContext
+    /// </summary>
     public sealed class MainSystem : ISubsystem, IUpdate
     {
+        /// <summary>
+        /// Subsystem name
+        /// </summary>
         public string Name => nameof(MainSystem);
 
         /// <summary>
@@ -44,6 +50,9 @@ namespace SuperFramework.Core
             _initializationCounter = 0;
         }
 
+        /// <summary>
+        /// True if system has been initialized, false otherwise
+        /// </summary>
         public bool IsInitialized { get; set; }
 
         public void InitializationFailed(ILogger logger, Exception e)
@@ -51,6 +60,11 @@ namespace SuperFramework.Core
             // Not implemented
         }
 
+        /// <summary>
+        /// Async initialize main system and all subsystems.
+        /// </summary>
+        /// <param name="logger">Logger</param>
+        /// <returns>Task object</returns>
         public async Task InitializeAsync(ILogger logger)
         {
             if (IsInitialized) return;
@@ -78,6 +92,10 @@ namespace SuperFramework.Core
             IsInitialized = true;
         }
 
+        /// <summary>
+        /// Pause all subsystems (Application goes to background)
+        /// </summary>
+        /// <returns>Task object</returns>
         public async Task PauseSystemAsync()
         {
             foreach (var system in _systems)
@@ -86,6 +104,10 @@ namespace SuperFramework.Core
             }
         }
 
+        /// <summary>
+        /// Resume all subsystems (Application return from background)
+        /// </summary>
+        /// <returns>Task object</returns>
         public async Task ResumeSystemAsync()
         {
             foreach (var system in _systems)
@@ -94,6 +116,10 @@ namespace SuperFramework.Core
             }
         }
 
+        /// <summary>
+        /// Gracefully shutdown all subsystems.
+        /// </summary>
+        /// <returns>Task object</returns>
         public async Task ShutdownAsync()
         {
             foreach (var system in _systems)
@@ -102,6 +128,12 @@ namespace SuperFramework.Core
             }
         }
 
+        /// <summary>
+        /// Add subsystem
+        /// </summary>
+        /// <param name="system">Subsystem to add</param>
+        /// <returns>Main System object</returns>
+        /// <exception cref="ArgumentNullException">Throws null exception if subsystem is null</exception>
         public MainSystem Add(ISubsystem system)
         {
             if (system == null)
@@ -123,6 +155,10 @@ namespace SuperFramework.Core
             return this;
         }
 
+        /// <summary>
+        /// Update all subsystem if they implement IUpdate interface
+        /// </summary>
+        /// <param name="deltaTime">Delta time</param>
         public void Update(float deltaTime)
         {
             foreach (var system in _updateableSystems)
@@ -131,7 +167,12 @@ namespace SuperFramework.Core
             }
         }
 
-    
+
+        /// <summary>
+        /// Get subsystem by type
+        /// </summary>
+        /// <typeparam name="T">Subsystem type</typeparam>
+        /// <returns>Subsystem object or null if not exists</returns>
         public ISubsystem GetSubsystem<T>()
         {
             return _systems.Where(s => s.GetType() == typeof(T)).FirstOrDefault();
