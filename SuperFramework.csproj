@@ -157,6 +157,7 @@
     <Compile Include="Interfaces\IUpdate.cs" />
     <Compile Include="Interfaces\IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\Core\Subsystems\TimersSubsytem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".git\objects\info\" />

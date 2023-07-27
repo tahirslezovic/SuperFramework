@@ -1,5 +1,4 @@
-﻿#if RELEASE_BUILD
-using SuperFramework.Interfaces;
+﻿using SuperFramework.Interfaces;
 using System;
 
 namespace SuperFramework.Core.Utils
@@ -21,6 +20,7 @@ namespace SuperFramework.Core.Utils
 
         public event Action OnTimerStarted;
         public event Action OnTimerPaused;
+        public event Action OnTimerResumed;
         public event Action OnTimerStopped;
         public event Action OnTimerFinished;
 
@@ -71,7 +71,7 @@ namespace SuperFramework.Core.Utils
                 }
 
                 return _timeFormat;
-             
+
             }
         }
 
@@ -113,6 +113,15 @@ namespace SuperFramework.Core.Utils
                 State = TimerState.Paused;
 
             OnTimerPaused?.Invoke();
+        }
+
+        public void Resume()
+        {
+            if (State == TimerState.Paused)
+            {
+                State = TimerState.Started;
+                OnTimerResumed?.Invoke();
+            }
         }
 
         public void Stop()
@@ -160,4 +169,3 @@ namespace SuperFramework.Core.Utils
     }
 
 }
-#endif
