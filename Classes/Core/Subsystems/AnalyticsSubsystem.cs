@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace SuperFramework.Core.Analytics
 {
+    /// <summary>
+    /// Base implementation for Analytics System. Analytics System can have 0 or more analytic providers (IAnalyticProvider)
+    /// </summary>
     public class AnalyticsSubsystem : ISubsystem
     {
         public string Name => nameof(AnalyticsSubsystem);

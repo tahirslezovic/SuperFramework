@@ -4,6 +4,7 @@ using System.Collections.Generic;
 namespace SuperFramework.Interfaces
 {
     /// <summary>
+    /// Base interface for each analytics provider in the game.s
     /// Every analytics provider should implement this interface, and it should be added through the AnalyticsSystem.
     /// </summary>
     public interface IAnalyticsProvider : IInitializable

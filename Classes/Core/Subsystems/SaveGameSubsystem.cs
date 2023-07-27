@@ -12,7 +12,7 @@ namespace SuperFramework.Core
     };
 
     /// <summary>
-    /// System that handles save game data.
+    /// System that handles save game data. This implementation store data binary as default format. Feel free to extend this class in order to have custom implementation, or create separated Subsystem
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class SaveGameSubsystem<T> : ISubsystem where T : ISaveData, new()

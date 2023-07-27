@@ -3,6 +3,7 @@
 namespace SuperFramework.Interfaces
 {
     /// <summary>
+    /// Base interface for each ad provider in game.
     /// Every ad provider need to implement this interface. Each Ad provider should be added through the AdsSystem.
     /// </summary>
     public interface IAdsProvider : IInitializable

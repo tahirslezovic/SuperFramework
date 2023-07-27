@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace SuperFramework.Classes.Core.Subsystems
 {
+    /// <summary>
+    /// Base implementation for all tutorials in the game.
+    /// </summary>
     public class TutorialSystem : ISubsystem
     {
 
