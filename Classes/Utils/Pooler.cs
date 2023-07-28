@@ -1,4 +1,4 @@
-﻿#if RELEASE_BUILD
+﻿
 using SuperFramework.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -87,4 +87,3 @@ namespace SuperFramework.Core.Utils
         }
     }
 }
-#endif

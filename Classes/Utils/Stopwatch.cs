@@ -1,4 +1,4 @@
-﻿#if RELEASE_BUILD
+﻿
 using System;
 
 namespace SuperFramework.Core.Utils
@@ -89,4 +89,3 @@ namespace SuperFramework.Core.Utils
 
     }
 }
-#endif
