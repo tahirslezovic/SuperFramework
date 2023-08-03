@@ -163,7 +163,7 @@
     <Folder Include=".git\objects\info\" />
     <Folder Include=".git\refs\tags\" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <Import Project="/usr/share/dotnet/sdk/7.0.306/Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
     <VisualStudio AllowExistingFolder="true" />
   </ProjectExtensions>
