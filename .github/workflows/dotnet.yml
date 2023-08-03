@@ -31,7 +31,6 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: SuperFramework
-        path: ${GITHUB_WORKSPACE}\bin\Release\SuperFramework.dll
-        run: ls ${GITHUB_WORKSPACE}\bin\Release\
+        path: ${{ github.workspace }}\bin\Releases\SuperFramework.dll
     # - name: Test
     #   run: dotnet test --no-build --verbosity normal
