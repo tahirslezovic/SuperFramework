@@ -26,5 +26,10 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Publish
       run: dotnet publish
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: SuperFramework
+        path: D:\a\SuperFramework\SuperFramework\bin\Release\SuperFramework.dll
     # - name: Test
     #   run: dotnet test --no-build --verbosity normal
