@@ -38,6 +38,13 @@ namespace SuperFramework.Classes.Core
         /// <param name="onHideCompleted">Method called when hide animation has completeds</param>
         public virtual void Hide(Action onHideStart = null, Action onHideCompleted = null)
         {
+            IsVisible = false;
+            if (_canvasGroup != null)
+            {
+                _canvasGroup.alpha = 0;
+                _canvasGroup.blocksRaycasts = false;
+            }
+
             onHideStart?.Invoke();
             onHideCompleted?.Invoke();
         }
@@ -78,6 +85,12 @@ namespace SuperFramework.Classes.Core
         /// <param name="onShowCompleted">Method called when show animation has completed</param>
         public virtual void Show(IViewData data = null, Action onShowStart = null, Action onShowCompleted = null)
         {
+            IsVisible = true;
+            if(_canvasGroup != null)
+            {
+                _canvasGroup.alpha = 1;
+                _canvasGroup.blocksRaycasts = true;
+            }
             onShowStart?.Invoke();
             onShowCompleted?.Invoke();
         }

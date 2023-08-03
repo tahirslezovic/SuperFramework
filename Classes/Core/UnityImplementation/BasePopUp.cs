@@ -7,7 +7,7 @@ using ILogger = SuperFramework.Interfaces.ILogger;
 namespace SuperFramework.Classes.Core
 {
     /// <summary>
-    /// Base pop-up
+    /// Base pop-up implementation.
     /// </summary>
     public abstract class BasePopUp : MonoBehaviour, IPopUp
     {
@@ -31,7 +31,15 @@ namespace SuperFramework.Classes.Core
         /// </summary>
         public abstract int Id { get; }
 
+        /// <summary>
+        /// Logger
+        /// </summary>
         protected ILogger _logger;
+
+        /// <summary>
+        /// Canvas group component (It can be null if component is not attached to this game object)
+        /// </summary>
+        protected CanvasGroup _canvasGroup;
 
         /// <summary>
         /// Hide pop-up
@@ -40,6 +48,13 @@ namespace SuperFramework.Classes.Core
         /// <param name="onHideCompleted">Method called when hide animation has completeds</param>
         public virtual void Hide(Action onHideStart = null, Action onHideCompleted = null)
         {
+            IsVisible = false;
+            if (_canvasGroup != null)
+            {
+                _canvasGroup.alpha = 0;
+                _canvasGroup.blocksRaycasts = false;
+            }
+
             onHideStart?.Invoke();
             onHideCompleted?.Invoke();
         }
@@ -56,6 +71,8 @@ namespace SuperFramework.Classes.Core
         /// <returns>Task object</returns>
         public virtual Task InitializeAsync(ILogger logger = null)
         {
+            _canvasGroup = GetComponent<CanvasGroup>();
+
             IsInitialized = true;
             _logger = logger;
             return Task.CompletedTask;
@@ -79,6 +96,13 @@ namespace SuperFramework.Classes.Core
         /// <param name="onShowCompleted">Method called when show animation has completed</param>
         public virtual void Show(IViewData data = null, Action onShowStart = null, Action onShowCompleted = null)
         {
+            IsVisible = true;
+            if (_canvasGroup != null)
+            {
+                _canvasGroup.alpha = 1;
+                _canvasGroup.blocksRaycasts = true;
+            }
+
             onShowStart?.Invoke();
             onShowCompleted?.Invoke();
         }
