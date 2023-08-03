@@ -27,7 +27,7 @@ jobs:
     - name: Publish
       run: |
         dotnet publish
-        echo "$GITHUB_CONTEXT"
+        env
     - uses: actions/upload-artifact@v3
       with:
         name: SuperFramework
