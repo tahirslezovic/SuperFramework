@@ -31,6 +31,6 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: SuperFramework
-        path: ${RUNNER_WORKSPACE}\bin\Release\SuperFramework.dll
+        path: ${RUNNER_WORKSPACE}\SuperFramework\bin\Release\SuperFramework.dll
     # - name: Test
     #   run: dotnet test --no-build --verbosity normal
