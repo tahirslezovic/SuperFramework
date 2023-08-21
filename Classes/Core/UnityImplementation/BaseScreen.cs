@@ -32,6 +32,11 @@ namespace SuperFramework.Classes.Core
         protected CanvasGroup _canvasGroup;
 
         /// <summary>
+        /// Animator component (It can be null if component is not attached game object)
+        /// </summary>
+        protected Animator _animator;
+
+        /// <summary>
         /// Hide screen
         /// </summary>
         /// <param name="onHideStart">Method called when hide animation has started</param>
@@ -49,10 +54,7 @@ namespace SuperFramework.Classes.Core
             onHideCompleted?.Invoke();
         }
 
-        public virtual void InitializationFailed(ILogger logger, Exception e)
-        {
-            // Nothing
-        }
+        public virtual void InitializationFailed(ILogger logger, Exception e) => logger?.LogException("Initialization failed!", e, Name);
 
         /// <summary>
         /// Async screen initialization
@@ -63,6 +65,7 @@ namespace SuperFramework.Classes.Core
         {
             _logger = logger;
             _canvasGroup = GetComponent<CanvasGroup>();
+            _animator = GetComponent<Animator>();   
             IsInitialized = true;
             return Task.CompletedTask;
         }

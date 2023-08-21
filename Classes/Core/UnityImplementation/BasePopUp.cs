@@ -42,6 +42,11 @@ namespace SuperFramework.Classes.Core
         protected CanvasGroup _canvasGroup;
 
         /// <summary>
+        /// Animator component (It can be null if component is not attached game object)
+        /// </summary>
+        protected Animator _animator;
+
+        /// <summary>
         /// Hide pop-up
         /// </summary>
         /// <param name="onHideStart">Method called when hide animation has started</param>
@@ -59,10 +64,7 @@ namespace SuperFramework.Classes.Core
             onHideCompleted?.Invoke();
         }
 
-        public virtual void InitializationFailed(ILogger logger, Exception e)
-        {
-            // Nothing
-        }
+        public virtual void InitializationFailed(ILogger logger, Exception e) => logger?.LogException("Initialization failed!", e, Name);
 
         /// <summary>
         /// Async initialize pop-up
@@ -72,7 +74,7 @@ namespace SuperFramework.Classes.Core
         public virtual Task InitializeAsync(ILogger logger = null)
         {
             _canvasGroup = GetComponent<CanvasGroup>();
-
+            _animator = GetComponent<Animator>();
             IsInitialized = true;
             _logger = logger;
             return Task.CompletedTask;

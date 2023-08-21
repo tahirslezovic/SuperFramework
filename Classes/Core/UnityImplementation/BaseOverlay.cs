@@ -24,6 +24,10 @@ namespace SuperFramework.Classes.Core
         /// </summary>
         protected CanvasGroup _canvasGroup;
 
+        /// <summary>
+        /// Animator component (It can be null if component is not attached game object)
+        /// </summary>
+        protected Animator _animator;
         #endregion
 
         #region Properties
@@ -41,13 +45,13 @@ namespace SuperFramework.Classes.Core
 
         #region API
 
-        public virtual void InitializationFailed(ILogger logger, Exception e)
-        {
-            // Nothing
-        }
+        public virtual void InitializationFailed(ILogger logger, Exception e) => logger?.LogException("Initialization failed!", e, Name);
 
         public virtual Task InitializeAsync(ILogger logger = null)
         {
+            _canvasGroup = GetComponent<CanvasGroup>();
+            _animator = GetComponent<Animator>();
+
             IsInitialized = true;
             _logger = logger;
             return Task.CompletedTask;
