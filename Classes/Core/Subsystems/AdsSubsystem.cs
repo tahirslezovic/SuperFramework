@@ -23,7 +23,7 @@ namespace SuperFramework.Core.Ads
 
         public virtual void InitializationFailed(ILogger logger, Exception e)
         {
-            logger?.LogError("Initialization failed", Name);
+            logger?.LogException("Initialization failed",e, Name);
         }
 
         public virtual async Task InitializeAsync(ILogger logger = null)
