@@ -108,5 +108,38 @@ namespace SuperFramework.Classes.Core
             onShowStart?.Invoke();
             onShowCompleted?.Invoke();
         }
+
+        /// <summary>
+        /// This function should be called from animation track event when show animation start
+        /// </summary>
+        public virtual void OnShowAnimationStart()
+        {
+
+        }
+
+        /// <summary>
+        /// This function should be called from animation track event when show animation has completed
+        /// </summary>
+        public virtual void OnShowAnimationComplete()
+        {
+
+        }
+
+
+        /// <summary>
+        /// This function should be called from animation track event when hide animation start
+        /// </summary>
+        public virtual void OnHideAnimationStart()
+        {
+
+        }
+
+        /// <summary>
+        /// This function should be called from animation track event when hide animation complete
+        /// </summary>
+        public virtual void OnHideAnimationComplete()
+        {
+
+        }
     }
 }
