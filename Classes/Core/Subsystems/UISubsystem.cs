@@ -226,7 +226,7 @@ namespace SuperFramework.Classes.Core
             {
                 _activePopUps[instanceId].Hide(onHideStarted, () =>
                 {
-                    DestroyImmediate(_activePopUps[instanceId].gameObject);
+                    Destroy(_activePopUps[instanceId].gameObject);
                     _activePopUps.Remove(instanceId);
                     onHideCompleted?.Invoke();
                 });
@@ -312,7 +312,7 @@ namespace SuperFramework.Classes.Core
             {
                 overlayToHide.Hide(onHideStarted, () =>
                 {
-                    DestroyImmediate(overlayToHide.gameObject);
+                    Destroy(overlayToHide.gameObject);
                     _activeOverlays.Remove(overlayToHide);
                     onHideCompleted?.Invoke();
                 });
