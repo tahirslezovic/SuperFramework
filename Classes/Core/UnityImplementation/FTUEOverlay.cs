@@ -11,7 +11,7 @@ namespace SuperFramework.Classes.Core.UnityImplementation
     }
 
     /// <summary>
-    /// FTUE overlay is a "holder" for all tutorial flows, ONLY TutorialSystem is responsible for communication between TutorialOverlay and TutorialSystem, and communication is in this way TutorialSystem---call--->FTUEOverlay
+    /// FTUE overlay is a "holder" for all tutorial flows, ONLY FTUESubsystem is responsible for communication between FTUEOverlay and FTUESubsystem, and communication is in this way FTUESubsystem---call--->FTUEOverlay
     /// </summary>
     public class FTUEOverlay : BaseOverlay
     {
