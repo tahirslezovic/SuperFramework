@@ -1,8 +1,5 @@
 ﻿using SuperFramework.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SuperFramework.Classes.Core.UnityImplementation
@@ -14,9 +11,9 @@ namespace SuperFramework.Classes.Core.UnityImplementation
     }
 
     /// <summary>
-    /// Tutorial overlay is a "holder" for all tutorial flows, ONLY TutorialSystem is responsible for communication between TutorialOverlay and TutorialSystem, and communication is in this way TutorialSystem---call--->TutorialOverlay
+    /// FTUE overlay is a "holder" for all tutorial flows, ONLY TutorialSystem is responsible for communication between TutorialOverlay and TutorialSystem, and communication is in this way TutorialSystem---call--->FTUEOverlay
     /// </summary>
-    public class TutorialOverlay : BaseOverlay
+    public class FTUEOverlay : BaseOverlay
     {
 
         #region Fields
@@ -25,7 +22,7 @@ namespace SuperFramework.Classes.Core.UnityImplementation
 
         #region Properties
 
-        public override string Name => nameof(TutorialOverlay);
+        public override string Name => nameof(FTUEOverlay);
 
         public override int Id => gameObject.GetInstanceID();
 
@@ -35,6 +32,12 @@ namespace SuperFramework.Classes.Core.UnityImplementation
 
         public override Task InitializeAsync(ILogger logger = null)
         {
+            if (IsInitialized)
+                return Task.CompletedTask;
+
+            logger?.Log("Initialization start", Name);
+
+            IsInitialized = true;
             return Task.CompletedTask;
         }
 
@@ -48,9 +51,6 @@ namespace SuperFramework.Classes.Core.UnityImplementation
         {
             
         }
-
-
-
 
         #endregion
 

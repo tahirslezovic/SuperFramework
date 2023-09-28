@@ -5,29 +5,29 @@ using UnityEngine;
 namespace SuperFramework.Classes.Core.UnityImplementation
 {
 
-    public enum TutorialFlow
+    public enum FTUEFlow
     {
         None = -1,
         // play_button or whatever tutorial flow is called
     }
 
-    public class BaseTutorialFlowData
+    public class BaseFTUEFlowData
     {
         public int CurrentStep { get; set; }
     }
 
-    public abstract class BaseTutorialFlow : MonoBehaviour
+    public abstract class BaseFTUEFlow : MonoBehaviour
     {
         #region Fields
 
-        protected BaseTutorialFlowData _tutorialFlowData;
-        protected List<BaseTutorialStep> _tutorialSteps;
+        protected BaseFTUEFlowData _ftueFlowData;
+        protected List<BaseFTUEStep> _ftueSteps;
         protected abstract Dictionary<int, FtueStepViewData> _tutorialStepDatas { get; }
 
         #endregion
 
         #region Properties
-        public abstract TutorialFlow FtueFlow { get; }
+        public abstract FTUEFlow FtueFlow { get; }
 
         /// <summary>
         /// Check if ftue flow sequence is completed, false if is not or ftue is not initialized
@@ -40,50 +40,50 @@ namespace SuperFramework.Classes.Core.UnityImplementation
 
         #region API
 
-        public virtual void Initialize(BaseTutorialFlowData tutorialFlowData)
+        public virtual void Initialize(BaseFTUEFlowData ftueFlowData)
         {
-            _tutorialFlowData = tutorialFlowData;
+            _ftueFlowData = ftueFlowData;
             //StartingStepId = Get from save game subsystem, so player can continue from this step
-            _tutorialSteps = GetComponentsInChildren<BaseTutorialStep>().ToList();
-            for (int i = 0; i < _tutorialSteps.Count; i++)
+            _ftueSteps = GetComponentsInChildren<BaseFTUEStep>().ToList();
+            for (int i = 0; i < _ftueSteps.Count; i++)
             {
-                _tutorialSteps[i].Initialize();
+                _ftueSteps[i].InitializeAsync();
             }
         }
 
-        public virtual void Refresh(BaseTutorialFlowData tutorialFlowData)
+        public virtual void Refresh(BaseFTUEFlowData ftueFlowData)
         {
-            _tutorialFlowData = tutorialFlowData;
+            _ftueFlowData = ftueFlowData;
         }
 
 
         public virtual void ShowCurrentStep()
         {
-              if (_tutorialFlowData == null && _tutorialStepDatas == null)
+              if (_ftueFlowData == null && _tutorialStepDatas == null)
               {
 
                 this.GetLogger().LogError("Flow data or ftue steps are null!");
                   return;
               }
-              int currentStep = _tutorialFlowData.CurrentStep;
+              int currentStep = _ftueFlowData.CurrentStep;
 
-              if (currentStep > 0 && _tutorialSteps[currentStep - 1].IsVisible)
+              if (currentStep > 0 && _ftueSteps[currentStep - 1].IsVisible)
               {
-                  _tutorialSteps[currentStep - 1].Hide(onHideCompleted: () =>
+                _ftueSteps[currentStep - 1].Hide(onHideCompleted: () =>
                   {
-                      _tutorialSteps[currentStep].Show(_tutorialStepDatas[currentStep]);
+                      _ftueSteps[currentStep].Show(_tutorialStepDatas[currentStep]);
                   });
               }
               else
               {
-                  _tutorialSteps[currentStep].Show(_tutorialStepDatas[currentStep]);
+                _ftueSteps[currentStep].Show(_tutorialStepDatas[currentStep]);
 
               }
         }
 
         public virtual void HideCurrentStep()
         {
-            _tutorialSteps[_tutorialFlowData.CurrentStep].Hide();
+            _ftueSteps[_ftueFlowData.CurrentStep].Hide();
         }
 
         #endregion
