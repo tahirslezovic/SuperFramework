@@ -7,7 +7,7 @@ namespace SuperFramework.Classes.Core.UnityImplementation
 
     public class TutorialOverlayData : IViewData
     {
-        public TutorialFlow Flow { get; set; }
+        public FTUEFlow Flow { get; set; }
     }
 
     /// <summary>
