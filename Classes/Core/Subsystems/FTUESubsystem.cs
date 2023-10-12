@@ -8,7 +8,7 @@ namespace SuperFramework.Classes.Core.Subsystems
     /// <summary>
     /// Base implementation for all FTUE's in the game.
     /// </summary>
-    public class FTUESubsystem : ISubsystem
+    public abstract class FTUESubsystem : ISubsystem
     {
        
         #region Fields
