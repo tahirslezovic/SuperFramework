@@ -7,7 +7,7 @@ namespace SuperFramework.Classes.Core.UnityImplementation
 
     public class TutorialOverlayData : IViewData
     {
-        public FTUEFlow Flow { get; set; }
+        public string Flow { get; set; }
     }
 
     /// <summary>
@@ -15,11 +15,6 @@ namespace SuperFramework.Classes.Core.UnityImplementation
     /// </summary>
     public class FTUEOverlay : BaseOverlay
     {
-
-        #region Fields
-        
-        #endregion
-
         #region Properties
 
         public override string Name => nameof(FTUEOverlay);

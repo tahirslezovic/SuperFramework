@@ -24,7 +24,7 @@ namespace SuperFramework.Classes.Core.Subsystems
 
         public bool IsInitialized { get; protected set; }
 
-        public FTUEFlow CurrentFlow { get; protected set; }
+        public string CurrentFlow { get; protected set; }
 
         /// <summary>
         /// Check if a certian Ftue is completed
@@ -42,13 +42,13 @@ namespace SuperFramework.Classes.Core.Subsystems
             if (IsInitialized) return Task.CompletedTask;
 
             _logger = logger;
-            CurrentFlow = FTUEFlow.None;
+            CurrentFlow = string.Empty;
 
             IsInitialized = true;
             return Task.CompletedTask;
         }
 
-        public virtual async void StartTutorialFlow(FTUEFlow flow)
+        public virtual async void StartTutorialFlow(string flow)
         {
             if(!IsInitialized)
             {
