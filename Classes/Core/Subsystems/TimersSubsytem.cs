@@ -27,10 +27,7 @@ namespace SuperFramework.Classes.Core.Subsystems
 
         #region API
 
-        public void InitializationFailed(ILogger logger, Exception e)
-        {
-            logger?.LogError("Initialization failed", Name);
-        }
+        public void InitializationFailed(ILogger logger, Exception e) => logger?.LogException("Initialization failed", e, Name);
 
         public Task InitializeAsync(ILogger logger = null)
         {
