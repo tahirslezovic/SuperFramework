@@ -1,7 +1,7 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using SuperFramework.Interfaces;
 using UnityEngine.Networking;
+using ILogger = SuperFramework.Interfaces.ILogger;
 
 namespace SuperFramework.Classes.Core
 {
@@ -64,25 +64,21 @@ namespace SuperFramework.Classes.Core
 
         private IEnumerator CheckIE()
         {
-            using (var request = new UnityWebRequest())
+            UnityWebRequest www = UnityWebRequest.Get(Url);
+
+            // Send the request
+            yield return www.SendWebRequest();
+
+            // Check for errors during the request
+            if (www.result != UnityWebRequest.Result.ConnectionError)
             {
-                request.url = Url;
-                request.method = UnityWebRequest.kHttpVerbGET;
-                request.timeout = 10;
-
-
-                yield return request.SendWebRequest();
-
-                if (request.result != UnityWebRequest.Result.Success)
-                {
-                    _logger?.LogError($"Probe {Url} reports offline status!", Id);
-                    Online = false;
-                }
-                else
-                {
-                    _logger?.LogError($"Probe {Url} reports online status!", Id);
-                    Online = true;
-                }
+                _logger?.LogError($"Probe {Url} reports online status!", Id);
+                Online = true;
+            }
+            else
+            {
+                _logger?.LogError($"Probe {Url} reports offline status!", Id);
+                Online = false;
             }
         }
 
