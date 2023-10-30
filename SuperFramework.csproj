@@ -160,6 +160,7 @@
     <Compile Include="Classes\Core\Subsystems\TimersSubsytem.cs" />
     <Compile Include="Interfaces\INetworkProbe.cs" />
     <Compile Include="Classes\Core\Subsystems\NetworkMonitorSubsystem.cs" />
+    <Compile Include="Classes\Core\UnityImplementation\UrlNetworkProbe.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".git\objects\info\" />
