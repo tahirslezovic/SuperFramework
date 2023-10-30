@@ -41,12 +41,7 @@ namespace SuperFramework.Classes.Core
 
         #region API
 
-        public void Check()
-        {
-            _logger?.Log($"Probe check {Url}");
-
-            GameContext.Instance.StartCoroutine(CheckIE());
-        }
+        public void Check() => GameContext.Instance.StartCoroutine(CheckIE());
 
         public void Update(float deltaTime)
         {
@@ -72,12 +67,10 @@ namespace SuperFramework.Classes.Core
             // Check for errors during the request
             if (www.result != UnityWebRequest.Result.ConnectionError)
             {
-                _logger?.LogError($"Probe {Url} reports online status!", Id);
                 Online = true;
             }
             else
             {
-                _logger?.LogError($"Probe {Url} reports offline status!", Id);
                 Online = false;
             }
         }

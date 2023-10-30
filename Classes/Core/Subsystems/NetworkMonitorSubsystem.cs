@@ -105,7 +105,6 @@ namespace SuperFramework.Classes.Core.Subsystems
         {
             if(_probeCheckStarted)
             {
-                _logger?.Log("Start probe check", Name);
                 // First we want to run update for all probes
                 for (int i=0;i<Probes.Count;i++)
                 {
@@ -131,16 +130,10 @@ namespace SuperFramework.Classes.Core.Subsystems
                     // If one of the probes is different than previous state, we should inform everyone
                     if(online != _previousOnlineStatus)
                     {
-
-                        _logger?.Log($"Status  changed {online}", Name);
                         // Fire event that online status changed from previous->current
                         OnlineStatusChanged?.Invoke(_previousOnlineStatus, online);
 
                         _previousOnlineStatus = online;
-                    }
-                    else
-                    {
-                        _logger?.Log("Status not changed", Name);
                     }
                 }
             }
