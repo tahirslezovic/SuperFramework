@@ -26,11 +26,6 @@ namespace SuperFramework.Classes.Core.Subsystems
 
         public string CurrentFlow { get; protected set; }
 
-        /// <summary>
-        /// Check if a certian Ftue is completed
-        /// </summary>
-        // public bool CheckFtueCompletion(TutorialFlow flow) => _ftueNakamaSystem.Sequences[flow.ToString()].Completed;
-
         #endregion
 
         #region API

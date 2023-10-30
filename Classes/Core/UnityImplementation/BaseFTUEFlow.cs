@@ -49,7 +49,7 @@ namespace SuperFramework.Classes.Core.UnityImplementation
 
         public virtual void ShowCurrentStep()
         {
-              if (_ftueFlowData == null && _tutorialStepDatas == null)
+              if (_ftueFlowData == null || _tutorialStepDatas == null)
               {
 
                 this.GetLogger().LogError("Flow data or ftue steps are null!");
