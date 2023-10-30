@@ -43,6 +43,8 @@ namespace SuperFramework.Classes.Core
 
         public void Check()
         {
+            _logger?.Log($"Probe check {Url}");
+
             GameContext.Instance.StartCoroutine(CheckIE());
         }
 
@@ -78,6 +80,7 @@ namespace SuperFramework.Classes.Core
                 }
                 else
                 {
+                    _logger?.LogError($"Probe {Url} reports online status!", Id);
                     Online = true;
                 }
             }
